@@ -4,12 +4,13 @@ import fs from "fs";
 import express from "express";
 import multer from "multer";
 
+// ===========================================  PDF parser app functions ===================
 let rows = {}; // indexed by y-position
 let pages = {};
 let results = [];
 let canRead = false;
 
-const transactionMonth = "mai";
+const transactionMonth = "aprilie";
 const transactionYear = "2023";
 
 // const pdfFilePath = "./docs/mai_2023.pdf";
@@ -66,6 +67,7 @@ function parsePage(page, pageNumber = 0) {
       rowActions.price = mainData[0];
 
       if (rowActions.price.includes("Incasare")) {
+        // atentie la "Cumparare POS corectie"/ ex: aprilie 2023.pdf
         // Logica de Incasare
         rowActions.price = mainData[2];
         rowActions.type = mainData[0];
@@ -135,15 +137,10 @@ function run(params) {
     }
   });
 }
-
+// =========================================== END PDF parser app functions ===================
 // run(params);
 
-// const express = require("express");
-const app = express();
-const port = 3000; // Choose a suitable port
-
-// Add your API routes and logic here
-
+// ===========================================  File functions ===================
 const storage = multer.diskStorage({
   destination: "uploads/", // Choose a folder where the files will be saved
   filename: (req, file, cb) => {
@@ -151,7 +148,55 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const uploadReport = multer({ storage });
+
+const formatFileSize = (sizeInBytes) => {
+  const units = ["B", "KB", "MB", "GB", "TB"];
+
+  let index = 0;
+  while (sizeInBytes >= 1024 && index < units.length - 1) {
+    sizeInBytes /= 1024;
+    index++;
+  }
+
+  return `${sizeInBytes.toFixed(2)} ${units[index]}`;
+};
+
+const getFilesInfo = (directoryPath) => {
+  let out = [];
+  try {
+    const files = fs.readdirSync(directoryPath);
+
+    files.forEach((file, index) => {
+      const filePath = `${directoryPath}/${file}`;
+      const stats = fs.statSync(filePath);
+
+      console.log("File Name:", file);
+      console.log("File Size:", stats.size);
+      console.log("File Modified Date:", stats.mtime);
+      console.log("---");
+
+      out.push({
+        id: index + 1,
+        name: file,
+        size: formatFileSize(stats.size),
+        modified_at: stats.mtime,
+      });
+    });
+
+    return out;
+  } catch (err) {
+    console.error("Error reading directory:", err);
+    return null;
+  }
+};
+// ===========================================  END File functions ===================
+
+// ===========================================  SERVER functions ===================
+const app = express();
+const port = 3000; // Choose a suitable port
+
+// Add your API routes and logic here
 
 // Enable CORS for all routes
 app.use((req, res, next) => {
@@ -165,7 +210,7 @@ app.use((req, res, next) => {
 });
 
 // Handle file upload endpoint
-app.post("/upload", upload.single("pdfFile"), (req, res) => {
+app.post("/upload", uploadReport.single("pdfFile"), (req, res) => {
   try {
     if (req.file) {
       // Perform any asynchronous operations here
@@ -195,6 +240,19 @@ app.post("/upload", upload.single("pdfFile"), (req, res) => {
   }
 });
 
+// Handle read existing report files
+app.get("/existing-reports", (req, res) => {
+  try {
+    let files = getFilesInfo("./rapoarte");
+    res.json({ files });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error occurred while retrieving files." });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
+// ===========================================  END SERVER functions ===================
