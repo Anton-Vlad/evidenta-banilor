@@ -34,10 +34,23 @@
 
     <section>
       <h3>Upload new Report</h3>
-      <div>
-        <input type="file" ref="fileInput" @change="handleFileUpload" />
-        <button @click="uploadFile">Upload</button>
-      </div>
+
+      <FileUpload 
+        name="demo[]" 
+        url="http://localhost:3000/upload" 
+        customUpload 
+        @uploader="uploadFile($event)" 
+        :multiple="false" 
+        accept="application/pdf" 
+        :maxFileSize="1000000"
+      >
+          <template #thumbnail>
+            <img src="./favicon.ico" alt="">
+          </template>
+          <template #empty>
+              <p>Drag and drop files to here to upload.</p>
+          </template>
+      </FileUpload>
     </section>
 
 
@@ -91,10 +104,9 @@ export default {
     clearInterval(this.timeInterval)
   },
   methods: {
-    handleFileUpload() {
-      this.selectedFile = this.$refs.fileInput.files[0];
-    },
-    uploadFile() {
+    uploadFile(e) {
+      this.selectedFile = e.files[0];
+      console.log(this.selectedFile)
       const formData = new FormData();
       formData.append('pdfFile', this.selectedFile);
       
