@@ -148,7 +148,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const uploadReport = multer({ storage });
+const uploadStatement = multer({ storage });
 
 const formatFileSize = (sizeInBytes) => {
   const units = ["B", "KB", "MB", "GB", "TB"];
@@ -210,27 +210,69 @@ app.use((req, res, next) => {
 });
 
 // Handle file upload endpoint
-app.post("/upload", uploadReport.single("pdfFile"), (req, res) => {
+app.post("/upload", uploadStatement.single("pdfFile"), (req, res) => {
   try {
     if (req.file) {
-      // Perform any asynchronous operations here
-      run({ filename: req.file.filename });
+      // Salvez extrasul brut, de la user
+      // Am acces la req.file;
 
-      let jsonFilePath2 =
-        "./rapoarte/" + req.file.filename.replace(".pdf", "") + ".json";
+      // Creez entry-ul in database/extra_de_cont pentru meta datele extrasului
+      let extra_de_cont_path =
+        "./database/extrase_de_cont/extrase_de_cont.json";
 
-      fs.readFile(jsonFilePath2, "utf8", (err, data) => {
-        if (err) {
-          console.error(err);
-          res.status(500).json({ error: "Error occurred while reading file." });
-        } else {
-          // Parse the JSON data
-          const jsonData = JSON.parse(data);
+      let extra_de_cont_data = fs.readFileSync(extra_de_cont_path);
 
-          // Return the JSON data as response
-          res.json(jsonData);
-        }
+      // Parse the JSON data
+      extra_de_cont_data = JSON.parse(extra_de_cont_data);
+
+      let newIndex = 1;
+      if (extra_de_cont_data.length > 0) {
+        newIndex = extra_de_cont_data[extra_de_cont_data.length - 1].id + 1;
+      }
+
+      extra_de_cont_data.push({
+        id: newIndex,
+        originalname: req.file.originalname,
+        mimetype: req.file.mimetype,
+        path: req.file.path,
+        size: req.file.size,
+        name: req.file.filename,
+        uploadedAt: new Date(),
+        month: null,
+        year: null,
+        bank: null,
+        bankAccount: null,
+        pageDelimitor: null,
       });
+
+      let newJsonData = JSON.stringify(extra_de_cont_data);
+      fs.writeFileSync(
+        "./database/extrase_de_cont/extrase_de_cont.json",
+        newJsonData
+      );
+
+      // Return the JSON data as response
+      res.json(extra_de_cont_data);
+
+      // De aici se duce la alt buton, alta ruta,  Edit extras => completarea detaliilor lipsa / parametrii necesari pentru procesare.
+
+      // let jsonFilePath2 =
+      //   "./rapoarte/" + req.file.filename.replace(".pdf", "") + ".json";
+
+      // // Logica de procesare fisier, dupa ce am toate meta datele necesare.
+      // run({ filename: req.file.filename });
+      // fs.readFile(jsonFilePath2, "utf8", (err, data) => {
+      //   if (err) {
+      //     console.error(err);
+      //     res.status(500).json({ error: "Error occurred while reading file." });
+      //   } else {
+      //     // Parse the JSON data
+      //     const jsonData = JSON.parse(data);
+
+      //     // Return the JSON data as response
+      //     res.json(jsonData);
+      //   }
+      // });
     } else {
       res.status(400).json({ error: "No file uploaded." });
     }
