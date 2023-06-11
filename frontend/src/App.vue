@@ -120,7 +120,7 @@ export default {
     }
   },
   async mounted() {
-    // await this.getExistingReports();
+    await this.getExistingStatements();
 
     // this.timeInterval = setInterval(() => {
     //   this.updateTimeSince += 1;
@@ -166,6 +166,22 @@ export default {
       .catch(error => {
         console.error('Error:', error);
       });
+    },
+
+    async getExistingStatements() {
+      try {
+        const response = await fetch('http://localhost:3000/statements', {
+          method: 'GET'
+        })
+      
+        if (!response.ok) {
+          throw new Error('HTTP Error: ' + response.status);
+        }
+        this.rawStatements = await response.json();
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
     },
 
     formatTimeSince(date) {
@@ -219,8 +235,6 @@ export default {
             return obj;
           }
         });
-
-        console.log('NEW TABLE', data)
 
       } catch (error) {
         console.error('Error:', error);

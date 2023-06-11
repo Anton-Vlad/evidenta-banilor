@@ -300,6 +300,13 @@ app.get("/existing-reports", (req, res) => {
   }
 });
 
+app.get("/statements", (req, res) => {
+  // Get the dabase statmenst
+  let extra_de_cont_data = fs.readFileSync(STATEMENTS_PATH);
+  extra_de_cont_data = JSON.parse(extra_de_cont_data);
+
+  res.json(extra_de_cont_data);
+});
 app.post("/edit-statement", (req, res) => {
   const requestBody = req.body;
 
