@@ -2,36 +2,6 @@
   <main>
     <h2>Evidenta Banilor</h2>
 
-    <section class="exisiting-reports">
-      <h3>Reports</h3>
-
-      <table style="width: 100%; border: 1px solid; padding: 10px;">
-        <thead>
-          <th>Name</th>
-          <th>Size</th>
-          <th>Last Modified</th>
-          <th>Actions</th>
-        </thead>
-
-        <tbody>
-          <tr v-for="row in reportsData" :key="'report-file-'+row.id">
-            <td>
-              {{ row.name }}
-            </td>
-            <td>
-              {{ row.size }}
-            </td>
-            <td :key="'report-date-since-'+row.id+'-'+updateTimeSince">
-              {{ formatTimeSince(row.modified_at) }}
-            </td>
-            <td>
-              actions {{ row.id }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
     <section>
       <h3>Upload new Report</h3>
 
@@ -52,6 +22,60 @@
           </template>
       </FileUpload>
     </section>
+
+    <section class="exisiting-statements">
+      <h3>Raw Statements</h3>
+
+      <DataTable 
+        v-model:editingRows="editingRows" :value="rawStatements" editMode="row" dataKey="id"
+        @row-edit-save="onRowEditSave" 
+        tableClass="editable-cells-table" tableStyle="min-width: 50rem"
+      >
+          <Column field="name" header="Name" style="width: 20%">
+              <template #editor="{ data, field }">
+                  <InputText v-model="data[field]" />
+              </template>
+          </Column>
+
+          <Column field="month" header="Month" style="width: 20%">
+              <template #editor="{ data, field }">
+                  <InputText v-model="data[field]" />
+              </template>
+          </Column>
+
+          <Column field="year" header="Year" style="width: 20%">
+              <template #editor="{ data, field }">
+                  <InputText v-model="data[field]" />
+              </template>
+          </Column>
+          
+          <Column field="bank" header="Bank" style="width: 20%">
+              <template #editor="{ data, field }">
+                  <InputText v-model="data[field]" />
+              </template>
+          </Column>
+          
+          <Column field="size" header="Size" style="width: 20%">
+            <template #body="slotProps">
+              {{ slotProps.data.size }}
+            </template>
+          </Column>
+          
+          <Column field="pageDelimitor" header="Delimitor" style="width: 20%">
+              <template #editor="{ data, field }">
+                  <InputText v-model="data[field]" />
+              </template>
+          </Column>
+
+          <Column :rowEditor="true" style="width: 10%; min-width: 8rem" bodyStyle="text-align:center"></Column>
+      </DataTable>
+    </section>
+
+
+
+
+
+
 
 
     <section v-if="tableData.length">
@@ -88,27 +112,29 @@ export default {
     return {
       tableData: [],
       reportsData: [],
+      rawStatements: [],
+      editingRows: [],
 
       timeInterval: null,
       updateTimeSince: 1,
     }
   },
   async mounted() {
-    await this.getExistingReports();
+    // await this.getExistingReports();
 
-    this.timeInterval = setInterval(() => {
-      this.updateTimeSince += 1;
-    }, 30000)
+    // this.timeInterval = setInterval(() => {
+    //   this.updateTimeSince += 1;
+    // }, 30000)
   },
   destroyed() {
-    clearInterval(this.timeInterval)
+    // clearInterval(this.timeInterval)
   },
   methods: {
     uploadFile(e) {
       this.selectedFile = e.files[0];
-      console.log(this.selectedFile)
+      
       const formData = new FormData();
-      formData.append('pdfFile', this.selectedFile);
+      formData.append('extras', this.selectedFile);
       
       fetch('http://localhost:3000/upload', {
         method: 'POST',
@@ -120,6 +146,9 @@ export default {
         this.tableData.length = 0;
         this.tableData = result;
         console.log(result); // Handle the server response as needed
+
+        // populate rawStatements
+        this.rawStatements = result
       })
       .catch(error => {
         console.error('Error:', error);
@@ -163,6 +192,42 @@ export default {
         .join(', ');
 
       return formattedTimePassed;
+    },
+
+
+    async onRowEditSave(params) {
+      const newData = {...params.newData};
+
+      try {
+        const response = await fetch("http://localhost:3000/edit-statement", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newData)
+        });
+        if (!response.ok) {
+          throw new Error('HTTP Error: ' + response.status);
+        }
+        const data = await response.json();
+
+        // overwrite the row of rawStatements
+        this.rawStatements = this.rawStatements.map((obj) => {
+          if (obj.id == data.id) {
+            return data;
+          } else {
+            return obj;
+          }
+        });
+
+        console.log('NEW TABLE', data)
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
+    async postEditData(url) {
+      
     }
   }
 };

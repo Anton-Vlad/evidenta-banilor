@@ -2,7 +2,12 @@ import { PdfReader } from "pdfreader";
 import fs from "fs";
 
 import express from "express";
+import bodyParser from "body-parser";
 import multer from "multer";
+import shortid from "shortid";
+shortid.characters(
+  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@"
+);
 
 // ===========================================  PDF parser app functions ===================
 let rows = {}; // indexed by y-position
@@ -12,6 +17,8 @@ let canRead = false;
 
 const transactionMonth = "aprilie";
 const transactionYear = "2023";
+
+const STATEMENTS_PATH = "./database/extrase_de_cont/extrase_de_cont.json";
 
 // const pdfFilePath = "./docs/mai_2023.pdf";
 const jsonFilePath =
@@ -144,7 +151,10 @@ function run(params) {
 const storage = multer.diskStorage({
   destination: "uploads/", // Choose a folder where the files will be saved
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    // const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    const uniqueSuffix = Date.now() + "-" + shortid.generate();
+    const originalExtension = file.originalname.split(".").pop();
+    cb(null, file.fieldname + "-" + uniqueSuffix + "." + originalExtension);
   },
 });
 
@@ -198,6 +208,12 @@ const port = 3000; // Choose a suitable port
 
 // Add your API routes and logic here
 
+// Middleware to parse JSON bodies
+app.use(bodyParser.json());
+
+// Middleware to parse URL-encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Enable CORS for all routes
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); // Adjust the origin value as needed
@@ -210,32 +226,26 @@ app.use((req, res, next) => {
 });
 
 // Handle file upload endpoint
-app.post("/upload", uploadStatement.single("pdfFile"), (req, res) => {
+app.post("/upload", uploadStatement.single("extras"), (req, res) => {
   try {
     if (req.file) {
       // Salvez extrasul brut, de la user
       // Am acces la req.file;
 
       // Creez entry-ul in database/extra_de_cont pentru meta datele extrasului
-      let extra_de_cont_path =
-        "./database/extrase_de_cont/extrase_de_cont.json";
-
-      let extra_de_cont_data = fs.readFileSync(extra_de_cont_path);
+      let extra_de_cont_data = fs.readFileSync(STATEMENTS_PATH);
 
       // Parse the JSON data
       extra_de_cont_data = JSON.parse(extra_de_cont_data);
 
-      let newIndex = 1;
-      if (extra_de_cont_data.length > 0) {
-        newIndex = extra_de_cont_data[extra_de_cont_data.length - 1].id + 1;
-      }
+      let fileId = req.file.filename.split("-")[2].split(".")[0];
 
       extra_de_cont_data.push({
-        id: newIndex,
-        originalname: req.file.originalname,
+        id: fileId,
+        originalName: req.file.originalname,
         mimetype: req.file.mimetype,
         path: req.file.path,
-        size: req.file.size,
+        size: formatFileSize(req.file.size),
         name: req.file.filename,
         uploadedAt: new Date(),
         month: null,
@@ -246,10 +256,7 @@ app.post("/upload", uploadStatement.single("pdfFile"), (req, res) => {
       });
 
       let newJsonData = JSON.stringify(extra_de_cont_data);
-      fs.writeFileSync(
-        "./database/extrase_de_cont/extrase_de_cont.json",
-        newJsonData
-      );
+      fs.writeFileSync(STATEMENTS_PATH, newJsonData);
 
       // Return the JSON data as response
       res.json(extra_de_cont_data);
@@ -291,6 +298,30 @@ app.get("/existing-reports", (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Error occurred while retrieving files." });
   }
+});
+
+app.post("/edit-statement", (req, res) => {
+  const requestBody = req.body;
+
+  // Get the dabase statmenst
+  let extra_de_cont_data = fs.readFileSync(STATEMENTS_PATH);
+  extra_de_cont_data = JSON.parse(extra_de_cont_data);
+
+  // Save the new statement data
+  let newDataID = requestBody.id;
+
+  const new_extra_de_cont_data = extra_de_cont_data.map((obj) => {
+    if (obj.id == newDataID) {
+      return requestBody;
+    } else {
+      return obj;
+    }
+  });
+
+  let newJsonData = JSON.stringify(new_extra_de_cont_data);
+  fs.writeFileSync(STATEMENTS_PATH, newJsonData);
+
+  res.json(requestBody);
 });
 
 app.listen(port, () => {
