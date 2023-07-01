@@ -67,6 +67,12 @@
               </template>
           </Column>
 
+          <Column header="Actions" bodyStyle="text-align:center">
+            <template #body="slotProps">
+              <Button icon="pi pi-play" aria-label="Trigger" size="small" @click="triggerParseStatement(slotProps.data.id)"/>
+            </template>
+          </Column>
+
           <Column :rowEditor="true" style="width: 10%; min-width: 8rem" bodyStyle="text-align:center"></Column>
       </DataTable>
     </section>
@@ -74,11 +80,9 @@
 
 
 
-
-
-
-
-    <section v-if="tableData.length">
+    <section class="exisiting-statements" style="margin-top: 32px;">
+      <h3>Raw Reports</h3>
+      
       <table style="width: 100%; border: 1px solid; padding: 10px;">
         <thead>
           <th>Data</th>
@@ -86,7 +90,7 @@
           <th>Pret</th>
         </thead>
         <tbody>
-          <tr v-for="row in tableData" :key="row.id">
+          <tr v-for="row in rawReports" :key="row.id">
             <td>
               {{ row.date }}
             </td>
@@ -110,7 +114,7 @@
 export default {
   data() {
     return {
-      tableData: [],
+      rawReports: [],
       reportsData: [],
       rawStatements: [],
       editingRows: [],
@@ -143,8 +147,8 @@ export default {
       .then(response => response.json())
       .then(result => {
 
-        this.tableData.length = 0;
-        this.tableData = result;
+        this.rawReports.length = 0;
+        this.rawReports = result;
         console.log(result); // Handle the server response as needed
 
         // populate rawStatements
@@ -240,8 +244,38 @@ export default {
         console.error('Error:', error);
       }
     },
-    async postEditData(url) {
+
+    async triggerParseStatement(statementId) {
+      console.log('PARSE STATEMENT: ' + statementId)
+
+      try {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        let raw = JSON.stringify({
+          "id": statementId
+        });
+
+        let requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw
+        };
+
+
+        const response = await fetch('http://localhost:3000/generate-report', requestOptions)
       
+        if (!response.ok) {
+          throw new Error('HTTP Error: ' + response.status);
+        }
+
+        let responseData = await response.text();
+        responseData = JSON.parse(responseData);
+        alert(responseData.success)
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
   }
 };

@@ -16,7 +16,7 @@ import "@/assets/main.css";
 // import "primevue/resources/themes/lara-light-teal/theme.css";
 import "primevue/resources/themes/lara-dark-blue/theme.css";
 import "primevue/resources/primevue.min.css";
-// import "primeicons/primeicons.css";
+import "primeicons/primeicons.css";
 
 const app = createApp(App);
 app.use(PrimeVue);
