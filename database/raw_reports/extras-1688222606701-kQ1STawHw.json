@@ -1,0 +1,363 @@
+[
+  {
+    "price": "99,91",
+    "type": "Cumparare POS",
+    "date": "01 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "29-04-2023 Autorizare: 881378"
+    ],
+    "id": "page-10",
+    "location": "MOL 91358 Bucuresti RO Bucuresti"
+  },
+  {
+    "price": "625,90",
+    "type": "Cumparare POS",
+    "date": "02 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "29-04-2023 Autorizare: 423540"
+    ],
+    "id": "page-14",
+    "location": "CARU CU BERE 2 RO BUCURESTI"
+  },
+  {
+    "price": "9,00",
+    "type": "Cumparare POS",
+    "date": "02 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "30-04-2023 Autorizare: 412334"
+    ],
+    "id": "page-18",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "6,00",
+    "type": "Cumparare POS",
+    "date": "02 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "30-04-2023 Autorizare: 016780"
+    ],
+    "id": "page-112",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "430,00",
+    "type": "Incasare",
+    "date": "02 mai 2023",
+    "details": [
+      "Ordonator:Anton Andrei",
+      "Din contul:RO03INGB0000999905328388",
+      "Detalii:Wknd 1 Mai",
+      "Referinta:685484407"
+    ],
+    "id": "page-116"
+  },
+  {
+    "price": "182,93",
+    "type": "Cumparare POS",
+    "date": "03 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "30-04-2023 Autorizare: 275407"
+    ],
+    "id": "page-121",
+    "location": "POSITIVE PRODUCTIONS SRL RO BUCURESTI"
+  },
+  {
+    "price": "300,00",
+    "type": "Cumparare POS",
+    "date": "04 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "01-05-2023 Autorizare: 462715"
+    ],
+    "id": "page-125",
+    "location": "CAMERA DEPUTATILOR - A RO BUCURESTI"
+  },
+  {
+    "price": "550,00",
+    "type": "Cumparare POS",
+    "date": "05 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "03-05-2023 Autorizare: 065433"
+    ],
+    "id": "page-20",
+    "location": "PlayStation Network NL Hilversum"
+  },
+  {
+    "price": "52,31",
+    "type": "Cumparare POS",
+    "date": "09 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "05-05-2023 Autorizare: 087515",
+      "Suma:10,57 EUR",
+      "10,57 EUR Rata ING: 4.9486"
+    ],
+    "id": "page-24",
+    "location": "STEAM PURCHASE DE SEATTLE"
+  },
+  {
+    "price": "52,99",
+    "type": "Cumparare POS",
+    "date": "09 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "07-05-2023 Autorizare: 313637"
+    ],
+    "id": "page-210",
+    "location": "APPLE.COM/BILL IE 0800894847"
+  },
+  {
+    "price": "98,34",
+    "type": "Cumparare POS",
+    "date": "09 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "07-05-2023 Autorizare: 018252"
+    ],
+    "id": "page-214",
+    "location": "MOL 91358 Bucuresti RO Bucuresti"
+  },
+  {
+    "price": "77,90",
+    "type": "Cumparare POS",
+    "date": "09 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "06-05-2023 Autorizare: 008425"
+    ],
+    "id": "page-218",
+    "location": "PayU*pizzahutdelive RO BUCURESTI"
+  },
+  {
+    "price": "96,80",
+    "type": "Cumparare POS",
+    "date": "10 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "08-05-2023 Autorizare: 008066"
+    ],
+    "id": "page-222",
+    "location": "AUC 0013 CRANGASI CN6 RO BUCURESTI"
+  },
+  {
+    "price": "6,00",
+    "type": "Cumparare POS",
+    "date": "12 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "10-05-2023 Autorizare: 472215"
+    ],
+    "id": "page-226",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "768,32",
+    "type": "Cumparare POS",
+    "date": "16 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "14-05-2023 Autorizare: 040337",
+      "Suma:154,60 EUR",
+      "154,60 EUR Rata ING: 4.9697"
+    ],
+    "id": "page-230",
+    "location": "YESOD SRLS IT ROMA"
+  },
+  {
+    "price": "293,60",
+    "type": "Cumparare POS",
+    "date": "16 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "14-05-2023 Autorizare: 147667"
+    ],
+    "id": "page-30",
+    "location": "SNTFC CFR Calatori SA RO BUCURESTI"
+  },
+  {
+    "price": "49,77",
+    "type": "Cumparare POS",
+    "date": "16 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "16-05-2023 Autorizare: 088272"
+    ],
+    "id": "page-34",
+    "location": "ENEL ENERGIE MUNTENIA RO BUCURESTI"
+  },
+  {
+    "price": "92,00",
+    "type": "Cumparare POS",
+    "date": "16 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "16-05-2023 Autorizare: 000612"
+    ],
+    "id": "page-38",
+    "location": "RCS AND RDS SA RO BUCURESTI"
+  },
+  {
+    "price": "6,00",
+    "type": "Cumparare POS",
+    "date": "18 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "15-05-2023 Autorizare: 211776"
+    ],
+    "id": "page-312",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "45,08",
+    "type": "Cumparare POS",
+    "date": "18 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "16-05-2023 Autorizare: 088365"
+    ],
+    "id": "page-316",
+    "location": "TELEKOM RO MOBILE RO BUCURE TI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "19 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "16-05-2023 Autorizare: 000080"
+    ],
+    "id": "page-320",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "12,99",
+    "type": "Cumparare POS",
+    "date": "20 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "18-05-2023 Autorizare: 530457"
+    ],
+    "id": "page-324",
+    "location": "APPLE.COM/BILL IE 0800894847"
+  },
+  {
+    "price": "27,85",
+    "type": "Cumparare POS",
+    "date": "21 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "19-05-2023 Autorizare: 060402"
+    ],
+    "id": "page-328",
+    "location": "OMV 1203 RO Buzau"
+  },
+  {
+    "price": "120,75",
+    "type": "Cumparare POS",
+    "date": "21 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "19-05-2023 Autorizare: 005333"
+    ],
+    "id": "page-332",
+    "location": "OMV 1203 RO Buzau"
+  },
+  {
+    "price": "56,68",
+    "type": "Cumparare POS",
+    "date": "21 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "21-05-2023 Autorizare: 064840"
+    ],
+    "id": "page-40",
+    "location": "ALTEX FALTICENI NADA RO Falticeni"
+  },
+  {
+    "price": "64,70",
+    "type": "Cumparare POS",
+    "date": "21 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "21-05-2023 Autorizare: 061623"
+    ],
+    "id": "page-44",
+    "location": "Subway Focsani RO Focsani"
+  },
+  {
+    "price": "120,06",
+    "type": "Cumparare POS",
+    "date": "23 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "21-05-2023 Autorizare: 077877"
+    ],
+    "id": "page-48",
+    "location": "OMV 1195 RO Focsani"
+  },
+  {
+    "price": "31,48",
+    "type": "Cumparare POS",
+    "date": "24 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "22-05-2023 Autorizare: 638257"
+    ],
+    "id": "page-412",
+    "location": "AUC 0013 CRANGASI CN5 RO BUCURESTI"
+  },
+  {
+    "price": "500,00",
+    "type": "Transfer Home'Bank",
+    "date": "24 mai 2023",
+    "details": [
+      "Beneficiar:Vlad-Viorel Anton",
+      "In contul:RO38BREL0005513723710100",
+      "Banca:LIBRA INTERNET BANK S.A.",
+      "Detalii:To Revolut -75VZ-",
+      "Referinta:1684945990372982146964"
+    ],
+    "id": "page-416"
+  },
+  {
+    "price": "61,14",
+    "type": "Cumparare POS",
+    "date": "26 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "24-05-2023 Autorizare: 031106"
+    ],
+    "id": "page-422",
+    "location": "AUC 0013 CRANGASI CN7 RO BUCURESTI"
+  },
+  {
+    "price": "49,85",
+    "type": "Cumparare POS",
+    "date": "28 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "27-05-2023 Autorizare: 002148",
+      "Suma:9,99 EUR",
+      "9,99 EUR Rata ING: 4.9895"
+    ],
+    "id": "page-426",
+    "location": "Netflix.com NL Los Gatos"
+  },
+  {
+    "price": "150,22",
+    "type": "Cumparare POS",
+    "date": "28 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 9423",
+      "27-05-2023 Autorizare: 711078"
+    ],
+    "id": "page-432",
+    "location": "KAUFLAND 4370 BUCURESTI RO BUCURESTI"
+  }
+]

@@ -28,7 +28,7 @@
 
       <DataTable 
         v-model:editingRows="editingRows" :value="rawStatements" editMode="row" dataKey="id"
-        @row-edit-save="onRowEditSave" 
+        @row-edit-save="onRowEditSave" @row-edit-init="onRowEditInit" @row-edit-cancel="onRowEditCancel"
         tableClass="editable-cells-table" tableStyle="min-width: 50rem"
       >
           <Column field="name" header="Name" style="width: 20%">
@@ -67,9 +67,12 @@
               </template>
           </Column>
 
-          <Column header="Actions" bodyStyle="text-align:center">
+          <Column v-if="!isRowEditorMode" header="Actions" bodyStyle="text-align:center">
             <template #body="slotProps">
-              <Button icon="pi pi-play" aria-label="Trigger" size="small" @click="triggerParseStatement(slotProps.data.id)"/>
+              <div style="display: flex; gap: 8px;">
+                <Button icon="pi pi-play" aria-label="Trigger" size="small" @click="triggerParseStatement(slotProps.data.id)"/>
+                <Button icon="pi pi-trash" aria-label="Trigger" size="small" severity="danger" @click="triggerTrashStatement(slotProps.data.id)"/>
+              </div>
             </template>
           </Column>
 
@@ -121,6 +124,8 @@ export default {
 
       timeInterval: null,
       updateTimeSince: 1,
+
+      isRowEditorMode: false,
     }
   },
   async mounted() {
@@ -214,9 +219,13 @@ export default {
       return formattedTimePassed;
     },
 
-
+    editRow(rowData) {
+      // Handle edit logic for the row
+      console.log('Edit:', rowData);
+    },
     async onRowEditSave(params) {
       const newData = {...params.newData};
+      this.isRowEditorMode = false;
 
       try {
         const response = await fetch("http://localhost:3000/edit-statement", {
@@ -244,10 +253,16 @@ export default {
         console.error('Error:', error);
       }
     },
+    onRowEditInit() {
+      console.log('ROW EDIT INIT')
+      this.isRowEditorMode = true;
+    },
+    onRowEditCancel() {
+      console.log('ROW EDIT CANCEL')
+      this.isRowEditorMode = false;
+    },
 
     async triggerParseStatement(statementId) {
-      console.log('PARSE STATEMENT: ' + statementId)
-
       try {
         let myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -262,7 +277,6 @@ export default {
           body: raw
         };
 
-
         const response = await fetch('http://localhost:3000/generate-report', requestOptions)
       
         if (!response.ok) {
@@ -272,6 +286,36 @@ export default {
         let responseData = await response.text();
         responseData = JSON.parse(responseData);
         alert(responseData.success)
+
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
+
+    async triggerTrashStatement(statementId) {
+      console.log('TRASH STATEMENT: ' + statementId)
+      try {
+        let myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        let raw = JSON.stringify({
+          "id": statementId
+        });
+
+        let requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw
+        };
+
+        const response = await fetch('http://localhost:3000/delete-statement', requestOptions)
+      
+        if (!response.ok) {
+          throw new Error('HTTP Error: ' + response.status);
+        }
+
+        this.rawStatements = await response.json();
+        alert("Statement DELETED successfully!")
 
       } catch (error) {
         console.error('Error:', error);

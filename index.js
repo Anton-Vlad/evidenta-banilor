@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import Parser from "./includes/parser.js";
 
 import express from "express";
@@ -67,6 +68,25 @@ const getFilesInfo = (directoryPath) => {
     console.error("Error reading directory:", err);
     return null;
   }
+};
+
+const deleteFile = (filePath) => {
+  const absolutePath = path.resolve(filePath);
+  const allowedDirectory = "/home/vlad/projects/pdf-reader-app/uploads/";
+
+  if (!absolutePath.startsWith(allowedDirectory)) {
+    throw new Error(
+      "File deletion not permitted outside the allowed directory"
+    );
+  }
+
+  fs.unlink(absolutePath, (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    return 0;
+  });
 };
 // ===========================================  END File functions ===================
 
@@ -220,6 +240,32 @@ app.post("/edit-statement", (req, res) => {
   fs.writeFileSync(STATEMENTS_PATH, newJsonData);
 
   res.json(requestBody);
+});
+app.post("/delete-statement", (req, res) => {
+  const requestBody = req.body;
+  const toBeDeletedID = requestBody.id;
+
+  // Get the dabase statmenst
+  let extra_de_cont_data = fs.readFileSync(STATEMENTS_PATH);
+  extra_de_cont_data = JSON.parse(extra_de_cont_data);
+
+  const new_extra_de_cont_data = extra_de_cont_data.filter(
+    (x) => x.id != toBeDeletedID
+  );
+  let to_be_deleted_file = extra_de_cont_data.filter(
+    (x) => x.id == toBeDeletedID
+  );
+  to_be_deleted_file = to_be_deleted_file.length ? to_be_deleted_file[0] : null;
+  if (!to_be_deleted_file) {
+    return res.status(404).json({ error: "Statement not found." });
+  }
+
+  deleteFile(to_be_deleted_file.path);
+
+  let newJsonData = JSON.stringify(new_extra_de_cont_data);
+  fs.writeFileSync(STATEMENTS_PATH, newJsonData);
+
+  res.json(new_extra_de_cont_data);
 });
 
 app.listen(port, () => {
