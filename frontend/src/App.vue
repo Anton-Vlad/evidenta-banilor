@@ -39,19 +39,49 @@
 
           <Column field="month" header="Month" style="width: 20%">
               <template #editor="{ data, field }">
-                  <InputText v-model="data[field]" />
+                  <Dropdown 
+                    v-model="data[field]" 
+                    :options="availableMonths" 
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Select a Month" 
+                    class="w-full md:w-14rem" 
+                  />
+              </template>
+              <template #body="slotProps">
+              {{ slotProps.data.month || 'none' }}
               </template>
           </Column>
 
           <Column field="year" header="Year" style="width: 20%">
               <template #editor="{ data, field }">
-                  <InputText v-model="data[field]" />
+                  <Dropdown 
+                    v-model="data[field]" 
+                    :options="availableYears" 
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Select a Year" 
+                    class="w-full md:w-14rem" 
+                  />
+              </template>
+              <template #body="slotProps">
+                {{ slotProps.data.year || 'none' }}
               </template>
           </Column>
           
           <Column field="bank" header="Bank" style="width: 20%">
               <template #editor="{ data, field }">
-                  <InputText v-model="data[field]" />
+                  <Dropdown 
+                    v-model="data[field]" 
+                    :options="availableBanks" 
+                    optionLabel="label"
+                    optionValue="value"
+                    placeholder="Select a Bank" 
+                    class="w-full md:w-14rem" 
+                  />
+              </template>
+              <template #body="slotProps">
+                {{ slotProps.data.bank || 'none' }}
               </template>
           </Column>
           
@@ -65,12 +95,15 @@
               <template #editor="{ data, field }">
                   <InputText v-model="data[field]" />
               </template>
+              <template #body="slotProps">
+                {{ slotProps.data.pageDelimitor || 'none' }}
+              </template>
           </Column>
 
           <Column v-if="!isRowEditorMode" header="Actions" bodyStyle="text-align:center">
             <template #body="slotProps">
               <div style="display: flex; gap: 8px;">
-                <Button icon="pi pi-play" aria-label="Trigger" size="small" @click="triggerParseStatement(slotProps.data.id)"/>
+                <Button :disabled="!canTriggerParse(slotProps.data)" icon="pi pi-play" aria-label="Trigger" size="small" @click="triggerParseStatement(slotProps.data.id)"/>
                 <Button icon="pi pi-trash" aria-label="Trigger" size="small" severity="danger" @click="triggerTrashStatement(slotProps.data.id)"/>
               </div>
             </template>
@@ -126,6 +159,32 @@ export default {
       updateTimeSince: 1,
 
       isRowEditorMode: false,
+      availableMonths: [
+        // 'ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'
+        { label: 'Ianuarie',  value: 'ianuarie' },
+        { label: 'Februarie', value: 'februarie' },
+        { label: 'Martie',    value: 'martie' },
+        { label: 'Aprilie',   value: 'aprilie' },
+        { label: 'Mai',       value: 'mai' },
+        { label: 'Iunie',     value: 'iunie' },
+        { label: 'Iulie',     value: 'iulie' },
+        { label: 'August',    value: 'august' },
+        { label: 'Septembrie',value: 'septembrie' },
+        { label: 'Octombrie', value: 'octombrie' },
+        { label: 'Noiembrie', value: 'noiembrie' },
+        { label: 'Decembrie', value: 'decembrie' },
+      ],
+      availableYears: [
+        { label: '2023', value: '2023' },
+        { label: '2022', value: '2022' },
+        { label: '2021', value: '2021' },
+        { label: '2020', value: '2020' },
+        { label: '2019', value: '2019' },
+      ],
+      availableBanks: [
+        { label: 'ING', value: 'ING' },
+        { label: 'BT', value: 'BT' },
+      ]
     }
   },
   async mounted() {
@@ -219,9 +278,16 @@ export default {
       return formattedTimePassed;
     },
 
-    editRow(rowData) {
-      // Handle edit logic for the row
-      console.log('Edit:', rowData);
+    canTriggerParse(rowData) {
+      if (
+        (!rowData.month || !rowData.year || !rowData.bank || !rowData.pageDelimitor || !rowData.name) 
+        || 
+        (!rowData.month.length || !rowData.year.length || !rowData.bank.length || !rowData.pageDelimitor.length || !rowData.name.length)
+      ) {
+        return false;
+      }
+
+      return true;
     },
     async onRowEditSave(params) {
       const newData = {...params.newData};

@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
     // const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
     const uniqueSuffix = Date.now() + "-" + shortid.generate();
     const originalExtension = file.originalname.split(".").pop();
-    cb(null, file.fieldname + "-" + uniqueSuffix + "." + originalExtension);
+    cb(null, file.fieldname + "-" + uniqueSuffix + "." + originalExtension); // file.fieldname == 'extras' => 'transactions'
   },
 });
 

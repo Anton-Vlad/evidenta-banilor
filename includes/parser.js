@@ -3,7 +3,8 @@ import fs from "fs";
 import path from "path";
 
 // const absolutePath = path.resolve("database/raw_reports");
-const REPORTS_TABLE = path.resolve("database/raw_reports");
+const TRANSACTIONS_TABLE = path.resolve("database/raw_reports");
+const RAW_REPORTS_PATH = "./database/raw_reports/raw_reports.json";
 
 export default class Parser {
   constructor() {
@@ -31,14 +32,31 @@ export default class Parser {
     this.rows = {}; // clear rows for next page
   }
 
-  saveJson(data, filename) {
+  saveJson(data, filename, statement) {
+    filename = filename.replace("extras", "trasactions");
+
     fs.writeFile(
-      REPORTS_TABLE + "/" + filename,
+      TRANSACTIONS_TABLE + "/" + filename,
       JSON.stringify(data),
       (error) => {
         if (error) {
           console.error("Error writing JSON file:", error);
         } else {
+          // Save the reference to the raw_reports table
+          let raw_reports_data = fs.readFileSync(RAW_REPORTS_PATH);
+
+          // Parse the JSON data
+          raw_reports_data = JSON.parse(raw_reports_data);
+
+          raw_reports_data.push({
+            id: statement.id,
+            name: statement.name,
+            transactions_file: TRANSACTIONS_TABLE + "/" + filename,
+            transactions_count: data.length,
+          });
+
+          let newRawReportsData = JSON.stringify(raw_reports_data);
+          fs.writeFileSync(RAW_REPORTS_PATH, newRawReportsData);
           console.log("PDF converted to JSON and saved successfully.");
         }
       }
@@ -121,7 +139,7 @@ export default class Parser {
           this.results.push(...this.parsePage(page, index));
         });
 
-        this.saveJson(this.results, fileName.replace(".pdf", ".json"));
+        this.saveJson(this.results, fileName.replace(".pdf", ".json"), params);
       } else if (item.page) {
         // print the rows of the previous page
         this.flushRows(item.page);
