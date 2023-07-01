@@ -1,5 +1,5 @@
-import { PdfReader } from "pdfreader";
 import fs from "fs";
+import Parser from "./includes/parser.js";
 
 import express from "express";
 import bodyParser from "body-parser";
@@ -10,142 +10,10 @@ shortid.characters(
 );
 
 // ===========================================  PDF parser app functions ===================
-let rows = {}; // indexed by y-position
-let pages = {};
-let results = [];
-let canRead = false;
-
-const transactionMonth = "aprilie";
-const transactionYear = "2023";
 
 const STATEMENTS_PATH = "./database/extrase_de_cont/extrase_de_cont.json";
 
-// const pdfFilePath = "./docs/mai_2023.pdf";
-const jsonFilePath =
-  "./rapoarte/raport-" + transactionMonth + "-" + transactionYear + ".json";
-
-function flushRows(pageNum) {
-  let pageObj = [];
-  Object.keys(rows) // => array of y-positions (type: float)
-    .sort((y1, y2) => parseFloat(y1) - parseFloat(y2)) // sort float positions
-    .forEach((y) => {
-      // console.log((rows[y] || []).join("|"))
-      pageObj.push((rows[y] || []).join("|"));
-    });
-
-  pages[pageNum] = pageObj;
-  rows = {}; // clear rows for next page
-}
-
-function saveJson(data, filename) {
-  fs.writeFile("./rapoarte/" + filename, JSON.stringify(data), (error) => {
-    if (error) {
-      console.error("Error writing JSON file:", error);
-    } else {
-      console.log("PDF converted to JSON and saved successfully.");
-    }
-  });
-}
-
-function parsePage(page, pageNumber = 0) {
-  let rowActions = {};
-  let actions = [];
-
-  let pageId = "page-" + pageNumber;
-
-  for (let i = 0; i < page.length; i++) {
-    if (page[i].includes("Terminal:")) {
-      const mainData = page[i].split(":");
-      rowActions.location = mainData[1];
-
-      continue;
-    }
-
-    if (page[i].includes(transactionMonth)) {
-      //page[i].includes("Cumparare POS")) {
-
-      if (Object.keys(rowActions).length > 0) {
-        actions.push(rowActions);
-        rowActions = {};
-      }
-
-      const mainData = page[i].split("|");
-
-      rowActions.price = mainData[0];
-
-      if (rowActions.price.includes("Incasare")) {
-        // atentie la "Cumparare POS corectie"/ ex: aprilie 2023.pdf
-        // Logica de Incasare
-        rowActions.price = mainData[2];
-        rowActions.type = mainData[0];
-        rowActions.date = mainData[1];
-      } else {
-        // Logica implicita de debit
-        rowActions.type = mainData[1];
-        rowActions.date = mainData[2];
-      }
-
-      rowActions.details = [];
-      rowActions.id = pageId + "" + i;
-
-      continue;
-    }
-
-    if (rowActions.details != undefined) {
-      rowActions.details.push(page[i]);
-    }
-
-    if (i == page.length - 1) {
-      if (Object.keys(rowActions).length > 0) {
-        actions.push(rowActions);
-        rowActions = {};
-      }
-    }
-  }
-
-  //   console.log(actions);
-
-  return actions;
-}
-
-function run(params) {
-  const filename = params.filename;
-
-  new PdfReader().parseFileItems("./uploads/" + filename, (err, item) => {
-    if (err) console.error("error:", err);
-    else if (!item) {
-      // console.log(pages)
-      Object.values(pages).forEach((page, index) => {
-        // if (index < 6 && index > 4) {
-        //   console.log("PAGE CONTENT " + index, page);
-        results.push(...parsePage(page, index));
-        // }
-      });
-
-      saveJson(results, filename.replace(".pdf", ".json"));
-      console.warn("end of file");
-    } else if (item.page) {
-      flushRows(item.page); // print the rows of the previous page
-      //   console.log("PAGE:", item.page);
-    } else if (item.text) {
-      if (item.text == "Roxana Petria") {
-        canRead = false;
-      }
-
-      if (canRead) {
-        // console.log(item.text);
-
-        (rows[item.y] = rows[item.y] || []).push(item.text);
-      }
-
-      if (item.text == "Data") {
-        canRead = true;
-      }
-    }
-  });
-}
 // =========================================== END PDF parser app functions ===================
-// run(params);
 
 // ===========================================  File functions ===================
 const storage = multer.diskStorage({
@@ -289,10 +157,33 @@ app.post("/upload", uploadStatement.single("extras"), (req, res) => {
   }
 });
 
+app.post("/generate-report", (req, res) => {
+  const statementId = req.body.id;
+
+  if (!statementId) {
+    return res.status(404).json({ error: "Statement metadata not found." });
+  }
+
+  // Get the statement metadata
+  let statementMetadataList = fs.readFileSync(STATEMENTS_PATH);
+  statementMetadataList = JSON.parse(statementMetadataList);
+
+  let statementMetadata = statementMetadataList.filter(
+    (x) => x.id == statementId
+  );
+  statementMetadata = statementMetadata.length ? statementMetadata[0] : null;
+
+  // nu stii cat dureaza
+  const parserC = new Parser();
+  parserC.run(statementMetadata);
+
+  return res.status(200).json({ success: "Report generated successfully." });
+});
+
 // Handle read existing report files
 app.get("/existing-reports", (req, res) => {
   try {
-    let files = getFilesInfo("./rapoarte");
+    let files = getFilesInfo("./database/raw_reports");
     res.json({ files });
   } catch (error) {
     console.error(error);

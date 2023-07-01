@@ -23,7 +23,7 @@
       </FileUpload>
     </section>
 
-    <section class="exisiting-statements">
+    <section class="exisiting-statements" style="margin-top: 32px;">
       <h3>Raw Statements</h3>
 
       <DataTable 

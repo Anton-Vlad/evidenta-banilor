@@ -1,1 +1,30 @@
-[{"id":"5Kzwy4VBR","originalName":"mai_2023.pdf","mimetype":"application/pdf","path":"uploads/extras-1686484193799-5Kzwy4VBR.pdf","size":"65.31 KB","name":"extras-mai-2023-5Kzwy4VBR.pdf","uploadedAt":"2023-06-11T11:49:53.805Z","month":"mai","year":"2023","bank":"ING","bankAccount":null,"pageDelimitor":"Roxana Petria"}]
+[
+  {
+    "id": "5Kzwy4VBR",
+    "originalName": "mai_2023.pdf",
+    "mimetype": "application/pdf",
+    "path": "uploads/extras-1686484193799-5Kzwy4VBR.pdf",
+    "size": "65.31 KB",
+    "name": "extras-mai-2023-5Kzwy4VBR.pdf",
+    "uploadedAt": "2023-06-11T11:49:53.805Z",
+    "month": "mai",
+    "year": "2023",
+    "bank": "ING",
+    "bankAccount": null,
+    "pageDelimitor": "Roxana Petria"
+  },
+  {
+    "id": "Q3a$rL1uq",
+    "originalName": "ING Bank - Extras de cont mai_2023_RO03INGB0000999905328388_RON.pdf",
+    "mimetype": "application/pdf",
+    "path": "uploads/extras-1688208316278-Q3a$rL1uq.pdf",
+    "size": "73.03 KB",
+    "name": "extras-1688208316278-Q3a$rL1uq.pdf",
+    "uploadedAt": "2023-07-01T10:45:16.283Z",
+    "month": "mai",
+    "year": "2023",
+    "bank": "ING",
+    "bankAccount": null,
+    "pageDelimitor": "Roxana Petria"
+  }
+]
