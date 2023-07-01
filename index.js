@@ -10,11 +10,8 @@ shortid.characters(
   "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$@"
 );
 
-// ===========================================  PDF parser app functions ===================
-
 const STATEMENTS_PATH = "./database/extrase_de_cont/extrase_de_cont.json";
-
-// =========================================== END PDF parser app functions ===================
+const RAW_REPORTS_PATH = "./database/raw_reports/raw_reports.json";
 
 // ===========================================  File functions ===================
 const storage = multer.diskStorage({
@@ -201,10 +198,12 @@ app.post("/generate-report", (req, res) => {
 });
 
 // Handle read existing report files
-app.get("/existing-reports", (req, res) => {
+app.get("/raw-reports", (req, res) => {
   try {
-    let files = getFilesInfo("./database/raw_reports");
-    res.json({ files });
+    let raw_reports_data = fs.readFileSync(RAW_REPORTS_PATH);
+    raw_reports_data = JSON.parse(raw_reports_data);
+
+    res.json(raw_reports_data);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error occurred while retrieving files." });

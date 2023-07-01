@@ -119,26 +119,34 @@
     <section class="exisiting-statements" style="margin-top: 32px;">
       <h3>Raw Reports</h3>
       
-      <table style="width: 100%; border: 1px solid; padding: 10px;">
-        <thead>
-          <th>Data</th>
-          <th>Tip</th>
-          <th>Pret</th>
-        </thead>
-        <tbody>
-          <tr v-for="row in rawReports" :key="row.id">
-            <td>
-              {{ row.date }}
-            </td>
-            <td>
-              {{ row.type }}
-            </td>
-            <td>
-              {{ row.price }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <DataTable 
+        v-model="rawReports" :value="rawReports" dataKey="id"
+        tableClass="editable-cells-table" tableStyle="min-width: 50rem"
+      >
+          <Column field="id" header="ID" style="width: 20%">
+              <template #body="slotProps">
+                {{ slotProps.data.id || 'none' }}
+              </template>
+          </Column>
+          <Column field="name" header="Name">
+              <template #body="slotProps">
+                {{ slotProps.data.name || 'none' }}
+              </template>
+          </Column>
+          <Column field="transactions_count" header="Transactions" style="width: 20%">
+              <template #body="slotProps">
+                {{ slotProps.data.transactions_count || 'none' }}
+              </template>
+          </Column>
+
+          <Column header="Actions" bodyStyle="text-align:center" style="width: 20%">
+            <template #body="slotProps">
+              <div style="display: flex; gap: 8px;">
+                <Button icon="pi pi-eye" aria-label="Trigger" size="small" severity="success" @click="viewSingleReport(slotProps.data.id)"/>
+              </div>
+            </template>
+          </Column>
+      </DataTable>
     </section>
   </main>
 
@@ -151,7 +159,6 @@ export default {
   data() {
     return {
       rawReports: [],
-      reportsData: [],
       rawStatements: [],
       editingRows: [],
 
@@ -160,7 +167,6 @@ export default {
 
       isRowEditorMode: false,
       availableMonths: [
-        // 'ianuarie', 'februarie', 'martie', 'aprilie', 'mai', 'iunie', 'iulie', 'august', 'septembrie', 'octombrie', 'noiembrie', 'decembrie'
         { label: 'Ianuarie',  value: 'ianuarie' },
         { label: 'Februarie', value: 'februarie' },
         { label: 'Martie',    value: 'martie' },
@@ -189,6 +195,7 @@ export default {
   },
   async mounted() {
     await this.getExistingStatements();
+    await this.getRawReports();
 
     // this.timeInterval = setInterval(() => {
     //   this.updateTimeSince += 1;
@@ -210,12 +217,8 @@ export default {
       })
       .then(response => response.json())
       .then(result => {
-
-        this.rawReports.length = 0;
-        this.rawReports = result;
-        console.log(result); // Handle the server response as needed
-
         // populate rawStatements
+        this.rawStatements.length = 0;
         this.rawStatements = result
       })
       .catch(error => {
@@ -223,13 +226,15 @@ export default {
       });
     },
 
-    async getExistingReports() {
-      fetch('http://localhost:3000/existing-reports', {
+    async getRawReports() {
+      fetch('http://localhost:3000/raw-reports', {
         method: 'GET'
       })
       .then(response => response.json())
       .then(result => {
-        this.reportsData = result.files; // Handle the server response as needed
+        this.rawReports = result;
+
+        console.log(this.rawReports)
       })
       .catch(error => {
         console.error('Error:', error);
@@ -353,6 +358,8 @@ export default {
         responseData = JSON.parse(responseData);
         alert(responseData.success)
 
+        await this.getRawReports();
+
       } catch (error) {
         console.error('Error:', error);
       }
@@ -386,6 +393,10 @@ export default {
       } catch (error) {
         console.error('Error:', error);
       }
+    },
+
+    viewSingleReport(rawReportId) {
+      console.log('View Raw Report: ' + rawReportId)
     }
   }
 };
