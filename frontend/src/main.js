@@ -1,7 +1,6 @@
-import "./assets/main.css";
-
 import { createApp } from "vue";
 import App from "./App.vue";
+import router from "./router";
 
 import PrimeVue from "primevue/config";
 import Button from "primevue/button";
@@ -13,7 +12,6 @@ import Column from "primevue/column";
 // import Row from 'primevue/row';                   // optional
 import InputText from "primevue/inputtext";
 
-import "@/assets/main.css";
 // import "primevue/resources/themes/lara-light-teal/theme.css";
 import "primevue/resources/themes/lara-dark-blue/theme.css";
 import "primevue/resources/primevue.min.css";
@@ -29,4 +27,5 @@ app.component("DataTable", DataTable);
 app.component("Column", Column);
 app.component("InputText", InputText);
 
+app.use(router);
 app.mount("#app");
