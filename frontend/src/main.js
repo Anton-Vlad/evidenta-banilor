@@ -5,6 +5,7 @@ import App from "./App.vue";
 
 import PrimeVue from "primevue/config";
 import Button from "primevue/button";
+import Dropdown from "primevue/dropdown";
 import FileUpload from "primevue/fileupload";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
@@ -16,12 +17,13 @@ import "@/assets/main.css";
 // import "primevue/resources/themes/lara-light-teal/theme.css";
 import "primevue/resources/themes/lara-dark-blue/theme.css";
 import "primevue/resources/primevue.min.css";
-// import "primeicons/primeicons.css";
+import "primeicons/primeicons.css";
 
 const app = createApp(App);
 app.use(PrimeVue);
 
 app.component("Button", Button);
+app.component("Dropdown", Dropdown);
 app.component("FileUpload", FileUpload);
 app.component("DataTable", DataTable);
 app.component("Column", Column);
