@@ -1,0 +1,763 @@
+[
+  {
+    "price": "42,30",
+    "type": "Cumparare POS",
+    "date": "01 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "29-04-2023 Autorizare: 061755"
+    ],
+    "id": "page-10",
+    "location": "BRICOSTORE ROMANIA SA RO BUCURESTI"
+  },
+  {
+    "price": "70,00",
+    "type": "Cumparare POS",
+    "date": "01 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "28-04-2023 Autorizare: 715712"
+    ],
+    "id": "page-14",
+    "location": "KEBAP SHOP RO Bucuresti"
+  },
+  {
+    "price": "9,00",
+    "type": "Cumparare POS",
+    "date": "02 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "30-04-2023 Autorizare: 257773"
+    ],
+    "id": "page-18",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "9,00",
+    "type": "Cumparare POS",
+    "date": "02 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "30-04-2023 Autorizare: 402648"
+    ],
+    "id": "page-112",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "430,00",
+    "type": "Transfer Home'Bank",
+    "date": "02 mai 2023",
+    "details": [
+      "Beneficiar:Vlad",
+      "In contul:RO80INGB0000999904618126",
+      "Catre:0749330559",
+      "Detalii:Wknd 1 Mai",
+      "Referinta:685484407"
+    ],
+    "id": "page-116"
+  },
+  {
+    "price": "2,58",
+    "type": "Incasare",
+    "date": "02 mai 2023",
+    "details": ["Referinta:4470", "Detalii:Transfer puncte bonus"],
+    "id": "page-122"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "03 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "01-05-2023 Autorizare: 362587",
+      "Roxana Petria|Alexandra Ilie",
+      "Şef Serviciu Dezvoltare Produse|Şef Serviciu Relaţii Clienţi",
+      "ING Bank N.V. Amsterdam|ING Bank N.V. Amsterdam",
+      "Sucursala Bucureşti|Sucursala Bucureşti",
+      "1|/9",
+      "Informatii despre schema de garantare a depozitelor si tipurile de conturi eligibile sunt disponibile",
+      "pe www.ing.ro/dgs si in locatiile bancii"
+    ],
+    "id": "page-125",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "28,00",
+    "type": "Cumparare POS",
+    "date": "03 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "03-05-2023 Autorizare: 657021"
+    ],
+    "id": "page-213",
+    "location": "14LANE RO Bucuresti"
+  },
+  {
+    "price": "66,00",
+    "type": "Cumparare POS",
+    "date": "04 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "03-05-2023 Autorizare: 080547"
+    ],
+    "id": "page-217",
+    "location": "RCS AND RDS SA RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "05 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "02-05-2023 Autorizare: 018633"
+    ],
+    "id": "page-221",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "05 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "02-05-2023 Autorizare: 361165"
+    ],
+    "id": "page-225",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "06 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "03-05-2023 Autorizare: 057233"
+    ],
+    "id": "page-229",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "25,00",
+    "type": "Cumparare POS",
+    "date": "06 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "03-05-2023 Autorizare: 363048"
+    ],
+    "id": "page-233",
+    "location": "METROREX U P SUDULUI RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "06 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "03-05-2023 Autorizare: 036047"
+    ],
+    "id": "page-237",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "29,03",
+    "type": "Cumparare POS",
+    "date": "06 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "05-05-2023 Autorizare: 021387"
+    ],
+    "id": "page-241",
+    "location": "KAUFLAND 2000 TARGOVISTE RO TARGOVISTE"
+  },
+  {
+    "price": "12,79",
+    "type": "Cumparare POS",
+    "date": "07 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "05-05-2023 Autorizare: 062086",
+      "Roxana Petria|Alexandra Ilie",
+      "Şef Serviciu Dezvoltare Produse|Şef Serviciu Relaţii Clienţi",
+      "ING Bank N.V. Amsterdam|ING Bank N.V. Amsterdam",
+      "Sucursala Bucureşti|Sucursala Bucureşti",
+      "2|/9",
+      "Informatii despre schema de garantare a depozitelor si tipurile de conturi eligibile sunt disponibile",
+      "pe www.ing.ro/dgs si in locatiile bancii"
+    ],
+    "id": "page-245",
+    "location": "ARTIMA SA RO BUCURESTI"
+  },
+  {
+    "price": "13,00",
+    "type": "Transfer Home'Bank",
+    "date": "08 mai 2023",
+    "details": [
+      "Beneficiar:Andreea Ene",
+      "In contul:RO98INGB0000999906523561",
+      "Banca:INGB CENTRALA",
+      "Detalii:Plata Gunoi Ap 7 aprilie",
+      "Referinta:687002296"
+    ],
+    "id": "page-313"
+  },
+  {
+    "price": "28,08",
+    "type": "Cumparare POS",
+    "date": "09 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "07-05-2023 Autorizare: 075725"
+    ],
+    "id": "page-319",
+    "location": "OMV 1955 RO TARGOVISTE"
+  },
+  {
+    "price": "19,00",
+    "type": "Cumparare POS",
+    "date": "10 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "10-05-2023 Autorizare: 416564"
+    ],
+    "id": "page-323",
+    "location": "ENGIE RO BUCURESTI"
+  },
+  {
+    "price": "27,40",
+    "type": "Cumparare POS",
+    "date": "10 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "10-05-2023 Autorizare: 183413"
+    ],
+    "id": "page-327",
+    "location": "Subway Focsani RO Focsani"
+  },
+  {
+    "price": "46,23",
+    "type": "Cumparare POS",
+    "date": "10 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "10-05-2023 Autorizare: 084334"
+    ],
+    "id": "page-331",
+    "location": "ENEL ENERGIE MUNTENIA RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "11 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "09-05-2023 Autorizare: 065316"
+    ],
+    "id": "page-335",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "28,00",
+    "type": "Cumparare POS",
+    "date": "11 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "09-05-2023 Autorizare: 774428"
+    ],
+    "id": "page-339",
+    "location": "BOUTIQUE DU PAIN BUCHA RO BUCURESTI"
+  },
+  {
+    "price": "10,24",
+    "type": "Cumparare POS",
+    "date": "11 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "09-05-2023 Autorizare: 472530",
+      "Roxana Petria|Alexandra Ilie",
+      "Şef Serviciu Dezvoltare Produse|Şef Serviciu Relaţii Clienţi",
+      "ING Bank N.V. Amsterdam|ING Bank N.V. Amsterdam",
+      "Sucursala Bucureşti|Sucursala Bucureşti",
+      "3|/9",
+      "Informatii despre schema de garantare a depozitelor si tipurile de conturi eligibile sunt disponibile",
+      "pe www.ing.ro/dgs si in locatiile bancii"
+    ],
+    "id": "page-343",
+    "location": "ARTIMA SA RO BUCURESTI"
+  },
+  {
+    "price": "32,53",
+    "type": "Cumparare POS",
+    "date": "11 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "09-05-2023 Autorizare: 070360"
+    ],
+    "id": "page-413",
+    "location": "HELP NET 200 C1 RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "11 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "09-05-2023 Autorizare: 581404"
+    ],
+    "id": "page-417",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "5,00",
+    "type": "Cumparare POS",
+    "date": "12 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "10-05-2023 Autorizare: 012267"
+    ],
+    "id": "page-421",
+    "location": "WWW.ORANGE.RO/YOXO RO BUCURESTI"
+  },
+  {
+    "price": "30,00",
+    "type": "Cumparare POS",
+    "date": "12 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "10-05-2023 Autorizare: 078375"
+    ],
+    "id": "page-425",
+    "location": "WWW.ORANGE.RO/YOXO RO BUCURESTI"
+  },
+  {
+    "price": "150,19",
+    "type": "Cumparare POS",
+    "date": "12 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "10-05-2023 Autorizare: 171316"
+    ],
+    "id": "page-429",
+    "location": "OMV 1195 RO Focsani"
+  },
+  {
+    "price": "15,79",
+    "type": "Cumparare POS",
+    "date": "12 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "10-05-2023 Autorizare: 542005"
+    ],
+    "id": "page-433",
+    "location": "OMV 1203 RO Buzau"
+  },
+  {
+    "price": "303,91",
+    "type": "Cumparare POS",
+    "date": "17 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "16-05-2023 Autorizare: 756224"
+    ],
+    "id": "page-437",
+    "location": "LIDL RO 0871 RO Falticeni"
+  },
+  {
+    "price": "22,00",
+    "type": "Transfer Home'Bank",
+    "date": "18 mai 2023",
+    "details": [
+      "Beneficiar:Nelu Ap 16",
+      "In contul:RO83INGB0000999912181647",
+      "Catre:0756191185",
+      "Detalii:Apa 05.23 ap 7",
+      "Referinta:690521290",
+      "Roxana Petria|Alexandra Ilie",
+      "Şef Serviciu Dezvoltare Produse|Şef Serviciu Relaţii Clienţi",
+      "ING Bank N.V. Amsterdam|ING Bank N.V. Amsterdam",
+      "Sucursala Bucureşti|Sucursala Bucureşti",
+      "4|/9",
+      "Informatii despre schema de garantare a depozitelor si tipurile de conturi eligibile sunt disponibile",
+      "pe www.ing.ro/dgs si in locatiile bancii"
+    ],
+    "id": "page-441"
+  },
+  {
+    "price": "13,00",
+    "type": "Transfer Home'Bank",
+    "date": "18 mai 2023",
+    "details": [
+      "Beneficiar:Bocioc Stefan",
+      "In contul:RO49BREL0005500808910100",
+      "Banca:LIBRA INTERNET BANK S.A.",
+      "Detalii:Factura Renato, ap 7",
+      "Referinta:1684391730101930124465"
+    ],
+    "id": "page-513"
+  },
+  {
+    "price": "20,00",
+    "type": "Transfer Home'Bank",
+    "date": "19 mai 2023",
+    "details": [
+      "Beneficiar:Nelu Ap 16",
+      "In contul:RO83INGB0000999912181647",
+      "Catre:0756191185",
+      "Detalii:Apa meteorica 05.23 ap7",
+      "Referinta:690967100"
+    ],
+    "id": "page-519"
+  },
+  {
+    "price": "1.876,13",
+    "type": "Rata Credit",
+    "date": "20 mai 2023",
+    "details": ["In contul:999912121148"],
+    "id": "page-525"
+  },
+  {
+    "price": "94,55",
+    "type": "Prima asigurare ING Credit Protect",
+    "date": "20 mai 2023",
+    "details": ["In contul:999912121148"],
+    "id": "page-527"
+  },
+  {
+    "price": "60,10",
+    "type": "Cumparare POS",
+    "date": "21 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "21-05-2023 Autorizare: 617657"
+    ],
+    "id": "page-529",
+    "location": "SOCAR Adjud Vrancea RO Bucuresti"
+  },
+  {
+    "price": "9,98",
+    "type": "Cumparare POS",
+    "date": "23 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "21-05-2023 Autorizare: 002003"
+    ],
+    "id": "page-533",
+    "location": "OMV 1195 RO Focsani"
+  },
+  {
+    "price": "69,99",
+    "type": "Cumparare POS",
+    "date": "23 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "23-05-2023 Autorizare: 685416"
+    ],
+    "id": "page-537",
+    "location": "CORA SUN PLAZA RO BUCURESTI"
+  },
+  {
+    "price": "28,50",
+    "type": "Comision plata anticipata",
+    "date": "23 mai 2023",
+    "details": ["In contul:999912121148"],
+    "id": "page-541"
+  },
+  {
+    "price": "2.850,00",
+    "type": "Recalculari aferente creditului",
+    "date": "23 mai 2023",
+    "details": [
+      "In contul:999912121148",
+      "Detalii:plata anticipata partiala",
+      "Referinta:4551",
+      "Roxana Petria|Alexandra Ilie",
+      "Şef Serviciu Dezvoltare Produse|Şef Serviciu Relaţii Clienţi",
+      "ING Bank N.V. Amsterdam|ING Bank N.V. Amsterdam",
+      "Sucursala Bucureşti|Sucursala Bucureşti",
+      "5|/9",
+      "Informatii despre schema de garantare a depozitelor si tipurile de conturi eligibile sunt disponibile",
+      "pe www.ing.ro/dgs si in locatiile bancii"
+    ],
+    "id": "page-543"
+  },
+  {
+    "price": "371,00",
+    "type": "Cumparare POS",
+    "date": "24 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "24-05-2023 Autorizare: 002501"
+    ],
+    "id": "page-613",
+    "location": "TOMATINA BEST DOI SRL RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "25 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "23-05-2023 Autorizare: 055562"
+    ],
+    "id": "page-617",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "7,05",
+    "type": "Cumparare POS",
+    "date": "25 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "23-05-2023 Autorizare: 034443"
+    ],
+    "id": "page-621",
+    "location": "ARTIMA SA RO BUCURESTI"
+  },
+  {
+    "price": "32,00",
+    "type": "Cumparare POS",
+    "date": "25 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "23-05-2023 Autorizare: 000716"
+    ],
+    "id": "page-625",
+    "location": "BEBETEI SUN PLAZA C3 RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "25 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "23-05-2023 Autorizare: 027737"
+    ],
+    "id": "page-629",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "30,00",
+    "type": "Cumparare POS",
+    "date": "25 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "23-05-2023 Autorizare: 065031"
+    ],
+    "id": "page-633",
+    "location": "Boutique du Pain Buc RO Bucuresti"
+  },
+  {
+    "price": "160,00",
+    "type": "Incasare",
+    "date": "25 mai 2023",
+    "details": [
+      "Ordonator:THALES SYSTEMS ROMANIA SRL",
+      "Din contul:RO67BRDE450SV12176104500",
+      "Detalii:/ROC/TE-T0073465-16052023-112,34 TE",
+      "-T007",
+      "Referinta:692096579",
+      "Cod Fiscal Platitor:19024418"
+    ],
+    "id": "page-637"
+  },
+  {
+    "price": "19,00",
+    "type": "Cumparare POS",
+    "date": "26 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "24-05-2023 Autorizare: 545707",
+      "Roxana Petria|Alexandra Ilie",
+      "Şef Serviciu Dezvoltare Produse|Şef Serviciu Relaţii Clienţi",
+      "ING Bank N.V. Amsterdam|ING Bank N.V. Amsterdam",
+      "Sucursala Bucureşti|Sucursala Bucureşti",
+      "6|/9",
+      "Informatii despre schema de garantare a depozitelor si tipurile de conturi eligibile sunt disponibile",
+      "pe www.ing.ro/dgs si in locatiile bancii"
+    ],
+    "id": "page-644",
+    "location": "WWW.ORANGE.RO/YOXO RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "26 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "24-05-2023 Autorizare: 075086"
+    ],
+    "id": "page-713",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "26 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "24-05-2023 Autorizare: 528178"
+    ],
+    "id": "page-717",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "62,07",
+    "type": "Cumparare POS",
+    "date": "27 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "23-05-2023 Autorizare: 082431",
+      "Suma:12,44 EUR",
+      "12,44 EUR Rata ING: 4.9895"
+    ],
+    "id": "page-721",
+    "location": "STEAM PURCHASE DE SEATTLE"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "27 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "24-05-2023 Autorizare: 562041"
+    ],
+    "id": "page-727",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "27 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "25-05-2023 Autorizare: 025136"
+    ],
+    "id": "page-731",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "27 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "25-05-2023 Autorizare: 386754"
+    ],
+    "id": "page-735",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "11,06",
+    "type": "Cumparare POS",
+    "date": "28 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "28-05-2023 Autorizare: 175086"
+    ],
+    "id": "page-739",
+    "location": "MEGAIMAGE 0746 CONSTR.20 RO BUCURESTI"
+  },
+  {
+    "price": "21,56",
+    "type": "Cumparare POS",
+    "date": "29 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "29-05-2023 Autorizare: 825802",
+      "Roxana Petria|Alexandra Ilie",
+      "Şef Serviciu Dezvoltare Produse|Şef Serviciu Relaţii Clienţi",
+      "ING Bank N.V. Amsterdam|ING Bank N.V. Amsterdam",
+      "Sucursala Bucureşti|Sucursala Bucureşti",
+      "7|/9",
+      "Informatii despre schema de garantare a depozitelor si tipurile de conturi eligibile sunt disponibile",
+      "pe www.ing.ro/dgs si in locatiile bancii"
+    ],
+    "id": "page-743",
+    "location": "ENGIE RO BUCURESTI"
+  },
+  {
+    "price": "400,00",
+    "type": "Retragere numerar",
+    "date": "29 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "29-05-2023 Autorizare: 030533"
+    ],
+    "id": "page-813",
+    "location": "6197 KAUFLAND APARATORII RO BUCURESTI"
+  },
+  {
+    "price": "3,00",
+    "type": "Cumparare POS",
+    "date": "30 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "28-05-2023 Autorizare: 045473"
+    ],
+    "id": "page-817",
+    "location": "STB SA RO BUCURESTI"
+  },
+  {
+    "price": "120,00",
+    "type": "Cumparare POS",
+    "date": "30 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "28-05-2023 Autorizare: 312103"
+    ],
+    "id": "page-821",
+    "location": "RESTAURANT LA MARIA SI IO RO BUCURESTI"
+  },
+  {
+    "price": "25,00",
+    "type": "Cumparare POS",
+    "date": "31 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "28-05-2023 Autorizare: 065261"
+    ],
+    "id": "page-825",
+    "location": "METROREX U GROZAVEST RO BUCURESTI"
+  },
+  {
+    "price": "24,00",
+    "type": "Cumparare POS",
+    "date": "31 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "28-05-2023 Autorizare: 048837"
+    ],
+    "id": "page-829",
+    "location": "IDM CLUB 2 RO BUCURESTI"
+  },
+  {
+    "price": "9.000,00",
+    "type": "Incasare",
+    "date": "31 mai 2023",
+    "details": [
+      "Ordonator:THALES SYSTEMS ROMANIA SRL",
+      "Din contul:RO66BRDE450SV14241254500",
+      "Detalii:/ROC/2023 MAI - LICHIDARE",
+      "Referinta:693603068",
+      "Cod Fiscal Platitor:19024418"
+    ],
+    "id": "page-833"
+  },
+  {
+    "price": "41,00",
+    "type": "Cumparare POS",
+    "date": "31 mai 2023",
+    "details": [
+      "Nr. card:**** **** **** 1402",
+      "31-05-2023 Autorizare: 057503",
+      "Roxana Petria|Alexandra Ilie",
+      "Şef Serviciu Dezvoltare Produse|Şef Serviciu Relaţii Clienţi",
+      "ING Bank N.V. Amsterdam|ING Bank N.V. Amsterdam",
+      "Sucursala Bucureşti|Sucursala Bucureşti",
+      "8|/9",
+      "Informatii despre schema de garantare a depozitelor si tipurile de conturi eligibile sunt disponibile",
+      "pe www.ing.ro/dgs si in locatiile bancii"
+    ],
+    "id": "page-839",
+    "location": "SOCULUI KEBAB RO BUCURESTI"
+  }
+]
