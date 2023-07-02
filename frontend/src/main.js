@@ -12,13 +12,15 @@ import Column from "primevue/column";
 // import Row from 'primevue/row';                   // optional
 import InputText from "primevue/inputtext";
 
-// import "primevue/resources/themes/lara-light-teal/theme.css";
-import "primevue/resources/themes/lara-dark-blue/theme.css";
+import "primevue/resources/themes/lara-light-teal/theme.css";
+// import "primevue/resources/themes/lara-dark-blue/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
 
+import "@/assets/styles.scss";
+
 const app = createApp(App);
-app.use(PrimeVue);
+app.use(PrimeVue, { ripple: true });
 
 app.component("Button", Button);
 app.component("Dropdown", Dropdown);
