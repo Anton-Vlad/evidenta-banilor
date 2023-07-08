@@ -209,6 +209,32 @@ app.get("/raw-reports", (req, res) => {
     res.status(500).json({ error: "Error occurred while retrieving files." });
   }
 });
+app.get("/raw-reports/:rid", (req, res) => {
+  try {
+    let rawReportId = req.params.rid;
+
+    // query database
+    let raw_reports_data = fs.readFileSync(RAW_REPORTS_PATH);
+    raw_reports_data = JSON.parse(raw_reports_data);
+
+    let rawReportData = raw_reports_data.filter((x) => x.id == rawReportId);
+    rawReportData = rawReportData.length ? rawReportData[0] : null;
+
+    if (!rawReportData) {
+      res.status(404).json({ error: "Record not found." });
+    }
+
+    let raw_report_transactions = fs.readFileSync(
+      rawReportData.transactions_file
+    );
+    raw_report_transactions = JSON.parse(raw_report_transactions);
+
+    res.json({ report: rawReportData, transactions: raw_report_transactions });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error occurred while retrieving records." });
+  }
+});
 app.get("/raw-reports/:rid/transactions", (req, res) => {
   try {
     let rawReportId = req.params.rid;

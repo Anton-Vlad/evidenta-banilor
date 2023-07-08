@@ -16,6 +16,14 @@
                         {{ slotProps.data.price || 'none' }}
                     </template>
                 </Column>
+                <Column field="tag" header="Tag">
+                    <template #body="slotProps">
+                        <Dropdown v-model="slotProps.data.tag" :options="transactionTags" optionLabel="name"
+                            optionValue="value" placeholder="Select a Tag"
+                            :class="`${(slotProps.data.tag ? '' : 'p-invalid')} w-full md:w-10rem`" />
+                    </template>
+                </Column>
+
                 <Column field="location" header="Location">
                     <template #body="slotProps">
                         {{ getTransactionLocation(slotProps.data) }}
@@ -27,6 +35,10 @@
                     </template>
                 </Column>
             </DataTable>
+
+            <div class="flex justify-content-end row-gap-3 mt-4 mb-4">
+                <Button label="Submit changes" :disabled="!canSubmitChanges" @click="onTransactionsSubmit" />
+            </div>
         </section>
 
     </main>
@@ -34,22 +46,78 @@
 
 <script>
 export default {
+    computed: {
+        canSubmitChanges() {
+            let tags = this.transactions.filter(x => x.tag == null);
+
+            return tags.length ? false : true;
+        }
+    },
     data() {
         return {
             rawReportID: null,
+            rawReportData: null,
             transactions: [],
 
+            transactionTags: [
+                {
+                    name: 'Null',
+                    value: null
+                },
+                {
+                    name: 'Operational',
+                    value: 'operational'
+                },
+                {
+                    name: 'Dorinta',
+                    value: 'dorinta'
+                },
+                {
+                    name: 'Economii',
+                    value: 'economii'
+                },
+                {
+                    name: 'Investii',
+                    value: 'investitii'
+                },
+                {
+                    name: 'Venit',
+                    value: 'venit'
+                }
+            ]
         }
     },
     async mounted() {
         this.rawReportID = this.$route.params.rid;
-        await this.getRawReportTransactions();
+        await this.getRawReport();
+        // await this.getRawReportTransactions();
 
     },
     destroyed() {
 
     },
     methods: {
+        async getRawReport() {
+            try {
+                const response = await fetch('http://localhost:3000/raw-reports/' + this.rawReportID, {
+                    method: 'GET'
+                })
+
+                if (!response.ok) {
+                    throw new Error('HTTP Error: ' + response.status);
+                }
+                let result = await response.json();
+                this.rawReportData = result.report;
+                let rawTransactions = result.transactions.map(x => {
+                    return { ...x, tag: 'economii' } // null
+                })
+
+                this.transactions = rawTransactions;
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        },
         async getRawReportTransactions() {
             try {
                 const response = await fetch('http://localhost:3000/raw-reports/' + this.rawReportID + '/transactions', {
@@ -59,7 +127,13 @@ export default {
                 if (!response.ok) {
                     throw new Error('HTTP Error: ' + response.status);
                 }
-                this.transactions = await response.json();
+                let rawTransactions = await response.json();
+
+                rawTransactions = rawTransactions.map(x => {
+                    return { ...x, tag: 'economii' } // null
+                })
+
+                this.transactions = rawTransactions;
 
             } catch (error) {
                 console.error('Error:', error);
@@ -120,6 +194,40 @@ export default {
                 return locationDetails.join(', ');
             }
             return out;
+        },
+
+
+        async onTransactionsSubmit() {
+            console.log('Submit transac', this.transactions)
+            try {
+
+                console.log('REPORT', this.rawReportData)
+
+                // const response = await fetch('http://localhost:3000/extended-reports/', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify({
+                //         report:
+                //             transactions: this.transactions
+                //     })
+                // })
+
+                // if (!response.ok) {
+                //     throw new Error('HTTP Error: ' + response.status);
+                // }
+                // let rawTransactions = await response.json();
+
+                // rawTransactions = rawTransactions.map(x => {
+                //     return { ...x, tag: 'economii' } // null
+                // })
+
+                // this.transactions = rawTransactions;
+
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
     }
 }
