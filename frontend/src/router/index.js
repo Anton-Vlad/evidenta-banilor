@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import RawReportView from "../views/RawReportView.vue";
 import OldApp from "../views/OldApp.vue";
 import AppLayout from "@/layout/AppLayout.vue";
 
@@ -14,6 +15,11 @@ const router = createRouter({
           path: "/",
           name: "Home",
           component: HomeView,
+        },
+        {
+          path: "/raw-report/:rid",
+          name: "RawReport",
+          component: RawReportView,
         },
       ],
     },
